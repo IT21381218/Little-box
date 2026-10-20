@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>A Little Box of Goodies · To Eehanee</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --pink: #d9738c;
+      --pink-light: #f8dce3;
+      --pink-soft: #fff1f4;
+      --cream: #fffaf7;
+      --paper: #fffdfb;
+      --purple: #8b789f;
+      --purple-light: #eee8f3;
+      --brown: #5b4650;
+      --text: #4d3d43;
+      --muted: #8d7c83;
+      --shadow: rgba(91, 70, 80, .13);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Nunito", sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(248,220,227,.7), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(238,232,243,.8), transparent 28%),
+        var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    button,
+    a {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* ---------------- NAV ---------------- */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 18px 6%;
+      background: rgba(255,250,247,.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(91,70,80,.08);
+    }
+
+    .brand {
+      font-family: "Caveat", cursive;
+      font-size: 27px;
+      font-weight: 600;
+      color: var(--brown);
+    }
+
+    .brand span {
+      color: var(--pink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--pink);
+    }
+
+    /* ---------------- GENERAL ---------------- */
+
+    section {
+      padding: 110px 7%;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .eyebrow {
+      color: var(--pink);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 6vw, 70px);
+      font-weight: 500;
+      line-height: 1;
+      color: var(--brown);
+    }
+
+    .section-description {
+      max-width: 650px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    /* ---------------- HERO ---------------- */
+
+    #home {
+      min-height: 100vh;
+      padding-top: 150px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero {
+      max-width: 1250px;
+      width: 100%;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .hero-text {
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-small {
+      font-family: "Caveat", cursive;
+      font-size: 25px;
+      color: var(--pink);
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(58px, 8vw, 105px);
+      line-height: .85;
+      font-weight: 500;
+      color: var(--brown);
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--pink);
+      font-family: "Pinyon Script", cursive;
+      font-size: .85em;
+    }
+
+    .hero-description {
+      max-width: 580px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .hero-signature {
+      margin-top: 25px;
+      font-family: "Caveat", cursive;
+      font-size: 28px;
+      color: var(--purple);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 22px;
+      font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      background: var(--pink);
+      color: white;
+      box-shadow: 0 12px 25px rgba(217,115,140,.25);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--brown);
+      border: 1px solid rgba(91,70,80,.12);
+    }
+
+    /* ---------------- GIFT BOX ---------------- */
+
+    .gift-area {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glow {
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: var(--pink-light);
+      filter: blur(4px);
+      opacity: .7;
+    }
+
+    .gift-box {
+      position: relative;
+      width: 280px;
+      height: 230px;
+      background: linear-gradient(145deg, #f5b8c7, #d9738c);
+      border-radius: 10px 10px 25px 25px;
+      box-shadow: 0 35px 60px rgba(91,70,80,.2);
+      transform: rotate(-4deg);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .gift-box::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -30px;
+      transform: translateX(-50%);
+      width: 310px;
+      height: 55px;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #f8ccd6, #d9738c);
+      box-shadow: 0 10px 15px rgba(91,70,80,.1);
+    }
+
+    .gift-box::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -30px;
+      width: 35px;
+      height: 260px;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,.28);
+    }
+
+    .ribbon {
+      position: absolute;
+      left: 50%;
+      top: -55px;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 55px;
+    }
+
+    .ribbon::before,
+    .ribbon::after {
+      content: "";
+      position: absolute;
+      width: 65px;
+      height: 38px;
+      border: 8px solid var(--pink);
+      border-radius: 50% 50% 50% 5px;
+      top: 0;
+    }
+
+    .ribbon::before {
+      left: -45px;
+      transform: rotate(-25deg);
+    }
+
+    .ribbon::after {
+      right: -45px;
+      transform: scaleX(-1) rotate(-25deg);
+    }
+
+    .box-message {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .box-message .heart {
+      font-size: 35px;
+    }
+
+    .box-message strong {
+      font-family: "Caveat", cursive;
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    .floating-note {
+      position: absolute;
+      padding: 13px 17px;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 15px 35px var(--shadow);
+      font-size: 22px;
+    }
+
+    .note-one {
+      top: 60px;
+      right: 0;
+      transform: rotate(8deg);
+      animation: float 4.5s ease-in-out infinite;
+    }
+
+    .note-two {
+      bottom: 60px;
+      left: 0;
+      transform: rotate(-8deg);
+      animation: float 5s ease-in-out infinite reverse;
+    }
+
+    .note-three {
+      bottom: 20px;
+      right: 30px;
+      transform: rotate(5deg);
+    }
+
+    /* ---------------- MEMORIES ---------------- */
+
+    #memories {
+      background: rgba(255,255,255,.42);
+    }
+
+    .memory-grid {
+      max-width: 1150px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .memory-card {
+      background: var(--paper);
+      padding: 13px 13px 25px;
+      box-shadow: 0 18px 45px var(--shadow);
+      transition: transform .3s ease;
+    }
+
+    .memory-card:nth-child(1) {
+      transform: rotate(-2deg);
+    }
+
+    .memory-card:nth-child(2) {
+      transform: rotate(2deg);
+    }
+
+    .memory-card:nth-child(3) {
+      transform: rotate(-1deg);
+    }
+
+    .memory-card:hover {
+      transform: translateY(-8px) rotate(0);
+    }
+
+    .memory-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      background: var(--pink-soft);
+    }
+
+    .memory-caption {
+      padding: 18px 8px 0;
+    }
+
+    .memory-caption h3 {
+      font-family: "Caveat", cursive;
+      font-size: 27px;
+      font-weight: 600;
+      color: var(--brown);
+    }
+
+    .memory-caption p {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* ---------------- GOODIES ---------------- */
+
+    .goodies-grid {
+      max-width: 1100px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .goodie {
+      background: white;
+      border: 1px solid rgba(91,70,80,.08);
+      border-radius: 25px;
+      padding: 30px;
+      box-shadow: 0 15px 40px var(--shadow);
+    }
+
+    .goodie-icon {
+      font-size: 35px;
+      margin-bottom: 18px;
+    }
+
+    .goodie h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+
+    .goodie p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* ---------------- SONGS ---------------- */
+
+    .songs {
+      margin-top: 55px;
+    }
+
+    .song-list {
+      max-width: 850px;
+      margin: auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .song {
+      background: white;
+      border-radius: 20px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 65px 1fr auto;
+      gap: 18px;
+      align-items: center;
+      border: 1px solid rgba(91,70,80,.08);
+      box-shadow: 0 12px 30px var(--shadow);
+    }
+
+    .vinyl {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, #fff 0 5px, var(--pink) 6px 9px, #2c2227 10px 100%);
+      box-shadow: 0 5px 15px rgba(0,0,0,.15);
+    }
+
+    .song h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--brown);
+    }
+
+    .song .artist {
+      color: var(--pink);
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .song .why {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .song-button {
+      border: 0;
+      background: var(--pink-soft);
+      color: var(--pink);
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-weight: 800;
+      white-space: nowrap;
+      transition: .2s;
+    }
+
+    .song-button:hover {
+      background: var(--pink);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .yt {
+      grid-column: 1 / -1;
+    }
+
+    .youtube-box {
+      margin-top: 5px;
+      padding: 20px;
+      border-radius: 16px;
+      background: linear-gradient(135deg,#fff5f7,#f4e9f7);
+      text-align: center;
+    }
+
+    .youtube-box .music-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .youtube-box strong {
+      display: block;
+      margin-bottom: 13px;
+      color: var(--brown);
+    }
+
+    .youtube-button {
+      display: inline-block;
+      padding: 11px 20px;
+      border-radius: 30px;
+      background: #d9738c;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .2s;
+    }
+
+    .youtube-button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ---------------- DRAWING ---------------- */
+
+    .drawing-area {
+      max-width: 850px;
+      margin: 60px auto 0;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 20px 50px var(--shadow);
+      transform: rotate(-1deg);
+    }
+
+    .drawing-area img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+      display: block;
+      background: var(--pink-soft);
+    }
+
+    .drawing-caption {
+      text-align: center;
+      padding: 18px 10px 5px;
+      font-family: "Caveat", cursive;
+      font-size: 25px;
+      color: var(--purple);
+    }
+
+    /* ---------------- LOVE NOTE ---------------- */
+
+    .love-note {
+      max-width: 800px;
+      margin: auto;
+      padding: 65px 50px;
+      background:
+        linear-gradient(rgba(255,255,255,.94), rgba(255,255,255,.94)),
+        repeating-linear-gradient(
+          transparent 0 34px,
+          rgba(217,115,140,.12) 35px
+        );
+      box-shadow: 0 25px 60px var(--shadow);
+      border-radius: 5px;
+      position: relative;
+    }
+
+    .love-note::before {
+      content: "♡";
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: var(--pink);
+      font-size: 32px;
+    }
+
+    .love-note p {
+      font-family: "Caveat", cursive;
+      font-size: 29px;
+      line-height: 1.65;
+      color: var(--brown);
+    }
+
+    .love-note .signature {
+      margin-top: 25px;
+      font-family: "Pinyon Script", cursive;
+      font-size: 43px;
+      color: var(--pink);
+      text-align: right;
+    }
+
+    /* ---------------- FINAL SURPRISE ---------------- */
+
+    #surprise {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .surprise-box {
+      max-width: 850px;
+      padding: 70px 35px;
+      margin: auto;
+    }
+
+    .surprise-heart {
+      font-size: 65px;
+      animation: heartbeat 1.5s infinite;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .surprise-box h2 {
+      font-size: clamp(50px, 8vw, 90px);
+    }
+
+    .final-message {
+      max-width: 650px;
+      margin: 25px auto;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .final-signature {
+      font-family: "Pinyon Script", cursive;
+      color: var(--pink);
+      font-size: 50px;
+      margin-top: 20px;
+    }
+
+    /* ---------------- FOOTER ---------------- */
+
+    footer {
+      text-align: center;
+      padding: 35px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* ---------------- ANIMATIONS ---------------- */
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0) rotate(-4deg);
+      }
+      50% {
+        transform: translateY(-12px) rotate(-2deg);
+      }
+    }
+
+    @keyframes heartbeat {
+      0%,100% {
+        transform: scale(1);
+      }
+      15% {
+        transform: scale(1.15);
+      }
+      30% {
+        transform: scale(1);
+      }
+      45% {
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-description {
+        margin: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-signature {
+        text-align: center;
+      }
+
+      .gift-area {
+        min-height: 430px;
+      }
+
+      .memory-grid,
+      .goodies-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .memory-card {
+        max-width: 500px;
+        margin: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 85px 5%;
+      }
+
+      nav {
+        padding: 15px 5%;
+      }
+
+      .brand {
+        font-size: 23px;
+      }
+
+      .gift-box {
+        width: 230px;
+        height: 200px;
+      }
+
+      .gift-box::before {
+        width: 255px;
+      }
+
+      .song {
+        grid-template-columns: 55px 1fr;
+      }
+
+      .song-button {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+
+      .love-note {
+        padding: 45px 25px;
+      }
+
+      .love-note p {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="brand">
+      A Little Box <span>♥</span> of Goodies
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#memories">Our Memories</a></li>
+      <li><a href="#goodies">Goodies</a></li>
+      <li><a href="#surprise">Final Surprise</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+  <section id="home">
+
+    <div class="hero">
+
+      <div class="hero-text">
+
+        <div class="hero-small">
+          A tiny digital love letter
+        </div>
+
+        <h1>
+          To <span>Eehanee</span>,
+          with love.
+        </h1>
+
+        <p class="hero-description">
+          I wanted to make you a little box filled with pieces of my heart —
+          songs, memories, drawings, tiny messages, and all the little things
+          that remind me of you.
+        </p>
+
+        <div class="hero-signature">
+          from Poornaka ♡
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#goodies" class="btn btn-primary">
+            Open Your Box ✨
+          </a>
+
+          <a href="#memories" class="btn btn-secondary">
+            Our Memories
+          </a>
+        </div>
+
+      </div>
+
+
+      <!-- GIFT BOX -->
+      <div class="gift-area">
+
+        <div class="glow"></div>
+
+        <div class="gift-box">
+
+          <div class="ribbon"></div>
+
+          <div class="box-message">
+            <div class="heart">♡</div>
+            <strong>For Eehanee</strong>
+            <small>open with love</small>
+          </div>
+
+        </div>
+
+        <div class="floating-note note-one">
+          💌
+        </div>
+
+        <div class="floating-note note-two">
+          🎵
+        </div>
+
+        <div class="floating-note note-three">
+          🎨
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MEMORIES -->
+  <section id="memories">
+
+    <div class="section-title">
+      <div class="eyebrow">little pieces of us</div>
+
+      <h2>Our Memories</h2>
+
+      <p class="section-description">
+        Some moments are ordinary when they happen,
+        but become precious when you look back at them.
+      </p>
+    </div>
+
+
+    <div class="memory-grid">
+
+      <div class="memory-card">
+
+        <img
+          class="memory-image"
+          src="https://res.cloudinary.com/dv5v0qj6w/image/upload/vYOUR_IMAGE_1/YOUR_IMAGE_1.jpg"
+          alt="A memory of us"
+          onerror="this.style.display='none'"
+        >
+
+        <div class="memory-caption">
+          <h3>One of my favourite moments ♡</h3>
+
+          <p>
+            A little moment that I wish I could keep inside a photograph forever.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="memory-card">
+
+        <img
+          class="memory-image"
+          src="https://res.cloudinary.com/dv5v0qj6w/image/upload/vYOUR_IMAGE_2/YOUR_IMAGE_2.jpg"
+          alt="Another memory of us"
+          onerror="this.style.display='none'"
+        >
+
+        <div class="memory-caption">
+          <h3>You make everything better</h3>
+
+          <p>
+            Somehow even the simplest days become special when you're there.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="memory-card">
+
+        <img
+          class="memory-image"
+          src="https://res.cloudinary.com/dv5v0qj6w/image/upload/vYOUR_IMAGE_3/YOUR_IMAGE_3.jpg"
+          alt="A beautiful memory"
+          onerror="this.style.display='none'"
+        >
+
+        <div class="memory-caption">
+          <h3>Another little memory</h3>
+
+          <p>
+            If I could replay certain days, this would definitely be one of them.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GOODIES -->
+  <section id="goodies">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        open carefully
+      </div>
+
+      <h2>Goodies Inside</h2>
+
+      <p class="section-description">
+        A few things I picked especially for you.
+      </p>
+
+    </div>
+
+
+    <!-- GOODIE TYPES -->
+    <div class="goodies-grid">
+
+      <div class="goodie">
+
+        <div class="goodie-icon">
+          🎵
+        </div>
+
+        <h3>Songs</h3>
+
+        <p>
+          Songs that remind me of you, moments we've shared,
+          or feelings I couldn't quite put into words.
+        </p>
+
+      </div>
+
+
+      <div class="goodie">
+
+        <div class="goodie-icon">
+          🎨
+        </div>
+
+        <h3>A Little Drawing</h3>
+
+        <p>
+          A tiny piece of art made especially for you.
+          Not perfect, but made with a ridiculous amount of love.
+        </p>
+
+      </div>
+
+
+      <div class="goodie">
+
+        <div class="goodie-icon">
+          💌
+        </div>
+
+        <h3>A Love Note</h3>
+
+        <p>
+          Because sometimes I have too many things in my head
+          and the easiest way to say them is to write them down.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- SONGS -->
+    <div class="songs">
+
+      <div class="section-title">
+
+        <div class="eyebrow">
+          press play ♡
+        </div>
+
+        <h2>Songs For You</h2>
+
+        <p class="section-description">
+          Every song has a reason for being here.
+        </p>
+
+      </div>
+
+
+      <div class="song-list">
+
+
+        <!-- SONG 1 -->
+        <div
+          class="song"
+          data-id="UOUuVlQC5Y0"
+          data-url="https://www.youtube.com/watch?v=UOUuVlQC5Y0"
+        >
+
+          <div class="vinyl"></div>
+
+          <div>
+            <h3>Remember the Time</h3>
+
+            <div class="artist">
+              Michael Jackson
+            </div>
+
+            <div class="why">
+              Because some moments deserve to be remembered forever.
+            </div>
+          </div>
+
+          <button class="song-button pp">
+            ▶ Play Song
+          </button>
+
+          <div class="yt"></div>
+
+        </div>
+
+
+        <!-- SONG 2 -->
+        <div
+          class="song"
+          data-id="1RMIy50Y8K8"
+          data-url="https://www.youtube.com/watch?v=1RMIy50Y8K8"
+        >
+
+          <div class="vinyl"></div>
+
+          <div>
+            <h3>Nothing Compares</h3>
+
+            <div class="artist">
+              The Weeknd
+            </div>
+
+            <div class="why">
+              Because there really isn't anyone quite like you.
+            </div>
+          </div>
+
+          <button class="song-button pp">
+            ▶ Play Song
+          </button>
+
+          <div class="yt"></div>
+
+        </div>
+
+
+        <!-- SONG 3 -->
+        <div
+          class="song"
+          data-id="RiZVjfjgNyY"
+          data-url="https://www.youtube.com/watch?v=RiZVjfjgNyY"
+        >
+
+          <div class="vinyl"></div>
+
+          <div>
+            <h3>I'm God</h3>
+
+            <div class="artist">
+              Clams Casino & Imogen Heap
+            </div>
+
+            <div class="why">
+              One of those songs that feels like a whole memory by itself.
+            </div>
+          </div>
+
+          <button class="song-button pp">
+            ▶ Play Song
+          </button>
+
+          <div class="yt"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- DRAWING -->
+    <div class="section-title" style="margin-top:100px;">
+
+      <div class="eyebrow">
+        something handmade
+      </div>
+
+      <h2>A Little Drawing</h2>
+
+    </div>
+
+
+    <div class="drawing-area">
+
+      <img
+        src="https://res.cloudinary.com/dv5v0qj6w/image/upload/vYOUR_DRAWING/YOUR_DRAWING.jpg"
+        alt="A drawing made for Eehanee"
+        onerror="this.style.display='none'"
+      >
+
+      <div class="drawing-caption">
+        I made this for you because you deserve little things made with love.
+      </div>
+
+    </div>
+
+
+    <!-- LOVE NOTE -->
+    <div class="section-title" style="margin-top:120px;">
+
+      <div class="eyebrow">
+        one more thing
+      </div>
+
+      <h2>A Note For You</h2>
+
+    </div>
+
+
+    <div class="love-note">
+
+      <p>
+        I don't need a special occasion to remind you how much
+        you mean to me. I just wanted to make you a little box
+        filled with pieces of my heart.
+
+        <br><br>
+
+        Thank you for being you, for making ordinary days feel
+        a little more beautiful, and for becoming one of my
+        favourite parts of life.
+
+        <br><br>
+
+        I hope whenever you come back here, you remember that
+        somewhere there is a boy who thinks you're pretty amazing.
+      </p>
+
+      <div class="signature">
+        — Poornaka ♡
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL SURPRISE -->
+  <section id="surprise">
+
+    <div class="surprise-box">
+
+      <div class="surprise-heart">
+        ♡
+      </div>
+
+      <div class="eyebrow">
+        the last little thing
+      </div>
+
+      <h2>
+        I Love You,
+        Eehanee.
+      </h2>
+
+      <p class="final-message">
+        I don't need a special occasion to remind you how much
+        you mean to me. I just wanted to make you a little box
+        filled with pieces of my heart.
+
+        <br><br>
+
+        Every song, every memory, every little note here is just
+        another way of saying something very simple:
+        I'm really lucky to have you.
+      </p>
+
+      <div class="final-signature">
+        Always, Poornaka ♡
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    made with too much affection · for Eehanee ♡
+  </footer>
+
+
+  <script>
+
+    /* =====================================================
+       SONG PLAYER
+       =====================================================
+
+       IMPORTANT:
+       We intentionally do NOT embed YouTube iframes here.
+
+       YouTube can return Error 153 when the page is running
+       locally, inside a preview, sandbox, file:// URL, or
+       another environment where YouTube cannot verify the
+       HTTP referrer.
+
+       Instead, the button opens the official YouTube video
+       in a new tab.
+    */
+
+    document.querySelectorAll(".song").forEach(song => {
+
+      const button = song.querySelector(".pp");
+      const output = song.querySelector(".yt");
+
+      button.addEventListener("click", () => {
+
+        const id = song.dataset.id;
+        const url = song.dataset.url;
+
+        if (!id || !url) {
+          output.innerHTML = `
+            <div class="youtube-box">
+              <div class="music-icon">⚠️</div>
+              <strong>YouTube link is missing.</strong>
+            </div>
+          `;
+
+          return;
+        }
+
+
+        /* Close every other song */
+        document.querySelectorAll(".song").forEach(other => {
+
+          if (other !== song) {
+
+            other.classList.remove("playing");
+
+            const otherButton = other.querySelector(".pp");
+            const otherOutput = other.querySelector(".yt");
+
+            otherButton.textContent = "▶ Play Song";
+            otherOutput.innerHTML = "";
+
+          }
+
+        });
+
+
+        /* Toggle current song */
+        if (song.classList.contains("playing")) {
+
+          song.classList.remove("playing");
+
+          button.textContent = "▶ Play Song";
+
+          output.innerHTML = "";
+
+          return;
+        }
+
+
+        song.classList.add("playing");
+
+        button.textContent = "♪ Open Song";
+
+
+        /*
+          We give the user a nice in-page card,
+          then let YouTube handle the actual playback.
+        */
+
+        output.innerHTML = `
+
+          <div class="youtube-box">
+
+            <div class="music-icon">
+              🎵
+            </div>
+
+            <strong>
+              ${escapeHTML(song.querySelector("h3").textContent)}
+            </strong>
+
+            <a
+              class="youtube-button"
+              href="${url}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ▶ Listen on YouTube
+            </a>
+
+          </div>
+
+        `;
+
+      });
+
+    });
+
+
+    /* =====================================================
+       ESCAPE HTML
+       ===================================================== */
+
+    function escapeHTML(text) {
+
+      const div = document.createElement("div");
+
+      div.textContent = text;
+
+      return div.innerHTML;
+
+    }
+
+
+    /* =====================================================
+       GIFT BOX CLICK
+       ===================================================== */
+
+    const giftBox = document.querySelector(".gift-box");
+
+    giftBox.addEventListener("click", () => {
+
+      giftBox.animate(
+
+        [
+          {
+            transform: "rotate(-4deg) scale(1)"
+          },
+          {
+            transform: "rotate(4deg) scale(1.08)"
+          },
+          {
+            transform: "rotate(-2deg) scale(1.04)"
+          },
+          {
+            transform: "rotate(-4deg) scale(1)"
+          }
+        ],
+
+        {
+          duration: 700,
+          easing: "ease-out"
+        }
+
+      );
+
+    });
+
+
+    /* =====================================================
+       SIMPLE SCROLL REVEAL
+       ===================================================== */
+
+    const revealElements = document.querySelectorAll(
+      ".memory-card, .goodie, .song, .love-note, .drawing-area"
+    );
+
+    const observer = new IntersectionObserver(
+
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.animate(
+
+              [
+                {
+                  opacity: 0,
+                  transform: "translateY(25px)"
+                },
+                {
+                  opacity: 1,
+                  transform: "translateY(0)"
+                }
+              ],
+
+              {
+                duration: 650,
+                easing: "ease-out",
+                fill: "forwards"
+              }
+
+            );
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: .12
+      }
+
+    );
+
+
+    revealElements.forEach(element => {
+
+      element.style.opacity = "0";
+
+      observer.observe(element);
+
+    });
+
+  </script>
+
+</body>
+</html>
