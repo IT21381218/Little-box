@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Little Box of Goodies · To Onelly</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Nunito:wght@400;600&family=Caveat:wght@500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#eef7fb;--paper:#f8fcfe;--ink:#12324a;--soft:#5f7f95;--wine:#06263d;--wine2:#0d4a6b;--blush:#bfe3f2;--rose:#1f8fb5;--gold:#7cc3da;--gold2:#d4f1fa;--shadow:0 18px 40px rgba(10,50,80,.22);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--cream:#0a1e2e;--paper:#0d2a3d;--ink:#e6f4fb;--soft:#9dbfd1;color-scheme:dark}}
+:root[data-theme="dark"]{--cream:#0a1e2e;--paper:#0d2a3d;--ink:#e6f4fb;--soft:#9dbfd1;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 17px/1.65 Nunito,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.08;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.hand{font-family:Caveat,cursive;font-size:1.3em;line-height:1.3}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:calc(12px + env(safe-area-inset-top,0px)) 26px 12px;display:flex;justify-content:space-between;align-items:center;background:rgba(6,38,61,.72);backdrop-filter:blur(12px);color:#e3f4fb}
+nav .logo{font-family:'Pinyon Script',cursive;font-size:1.6rem;color:var(--gold2)}
+nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+nav a{color:inherit;text-decoration:none;font-size:.93rem;letter-spacing:.04em}
+nav a:hover{color:var(--gold2)}
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;color:#eaf7fc;overflow:hidden;
+background:radial-gradient(ellipse at 50% 70%,#1a6f95 0%,var(--wine2) 38%,var(--wine) 80%)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(rgba(212,241,250,.35) 1px,transparent 1.5px) 0 0/46px 46px;opacity:.25;pointer-events:none}
+.hero h1{font-size:clamp(2.3rem,6.2vw,4.6rem);font-style:italic;max-width:900px;background:linear-gradient(100deg,#d4f1fa,#ffffff 40%,#7cc3da 70%,#d4f1fa);-webkit-background-clip:text;background-clip:text;color:transparent;position:relative}
+.hero p{max-width:540px;color:#cfe6f0;margin:1rem auto 0;position:relative}
+.hand-to{font-family:'Pinyon Script',cursive;font-size:clamp(1.5rem,3.4vw,2.1rem);color:var(--gold2);margin-top:.6rem;position:relative}
+.stage{position:relative;width:min(340px,80vw);aspect-ratio:1;margin:18px auto 0}
+.gift{all:unset;display:block;width:100%;height:100%;cursor:pointer;position:relative;z-index:3}
+.gift svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 22px 30px rgba(0,0,0,.45))}
+.gift:not(.open){animation:bob 3.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-9px) rotate(.6deg)}}
+.lid{transform-box:fill-box;transform-origin:center}
+.gift.open .lid{animation:lidoff 1.5s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes lidoff{0%{transform:none}30%{transform:translateY(-62px) rotate(-3deg)}100%{transform:translate(120px,96px) rotate(17deg)}}
+.tagg{transform-box:fill-box;transform-origin:top left;animation:sway 4s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(3deg)}}
+.glow{position:absolute;left:50%;top:40%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%) scale(.2);border-radius:50%;background:radial-gradient(circle,rgba(255,236,180,.9),rgba(240,200,120,.35) 35%,transparent 65%);opacity:0;transition:opacity .8s,transform 1.4s;z-index:1;pointer-events:none}
+.glow.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.cta{margin-top:30px;position:relative;border:1.5px solid var(--gold);background:linear-gradient(180deg,rgba(212,241,250,.2),rgba(124,195,218,.1));border-radius:40px;padding:14px 34px;color:var(--gold2);letter-spacing:.05em;transition:.3s}
+.cta:hover{background:var(--gold);color:var(--wine);transform:translateY(-2px)}
+.cta[hidden]{display:none}
+.cue{margin-top:24px;color:var(--gold2);opacity:0;transition:opacity 1s 1.5s;font-size:.9rem}
+.cue.on{opacity:.8}
+.fh{position:absolute;bottom:-30px;opacity:0;animation:rise linear forwards;pointer-events:none}
+@keyframes rise{10%{opacity:.6}100%{transform:translateY(-115vh) translateX(var(--dx)) rotate(25deg);opacity:0}}
+/* content */
+#content{display:none}#content.show{display:block}
+section.pg{max-width:1080px;margin:auto;padding:90px 22px}
+.pg h2{font-size:clamp(2.1rem,5vw,3.4rem);text-align:center;font-style:italic}
+.pg .sub{text-align:center;color:var(--soft);max-width:540px;margin:.7rem auto 2.6rem}
+.rule{display:block;width:90px;height:1px;margin:14px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.pre{opacity:0}
+.pols{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;padding:10px 0 40px}
+.pol{width:min(260px,78vw);background:#fffdf8;padding:13px 13px 18px;margin:0;box-shadow:var(--shadow);transform:rotate(var(--r));transition:transform .4s;position:relative;color:#12324a}
+.pol:hover{transform:rotate(0) scale(1.05);z-index:3}
+.pol::before{content:"";position:absolute;top:-12px;left:50%;width:84px;height:24px;transform:translateX(-50%) rotate(-3deg);background:rgba(212,241,250,.65);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.pol img,.frame img{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:var(--blush)}
+.cap{font-family:Caveat,cursive;font-size:1.45rem;text-align:center;margin-top:8px;line-height:1.2}
+.pol small{display:block;text-align:center;color:#5f7f95;font-size:.8rem}
+.frame{width:min(400px,86vw);margin:20px auto 0;padding:16px;background:linear-gradient(135deg,#d4f1fa,#7cc3da 45%,#eefaff 70%,#5fa8c4);box-shadow:var(--shadow)}
+.frame .in{background:#fffdf8;padding:14px;color:#12324a}
+.frame img{aspect-ratio:4/3}
+.portrait{width:min(460px,88vw);margin:0 auto 70px;padding:14px 14px 20px;background:#fffdf8;border-radius:22px;box-shadow:var(--shadow),0 0 0 1px rgba(124,195,218,.55),0 0 0 9px rgba(212,241,250,.55);color:#12324a;text-align:center}
+.portrait img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;background:var(--blush)}
+.portrait .cap{font-size:1.7rem}
+.songs{display:grid;gap:24px;max-width:760px;margin:auto}
+.song{background:var(--paper);border-radius:20px;padding:22px;box-shadow:var(--shadow);border:1px solid rgba(124,195,218,.35);display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:center}
+.vinyl{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle,var(--gold) 0 14%,#08202f 15% 30%,#0d2a3d 31% 33%,#08202f 34% 55%,#0d2a3d 56% 58%,#08202f 59%);display:grid;place-items:center;box-shadow:0 8px 18px rgba(0,0,0,.35)}
+.song.playing .vinyl{animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.song h3{font-size:1.55rem}.song small{color:var(--soft)}
+.song .hand{margin:.3rem 0 .5rem}
+.row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.pp{display:inline-block;text-decoration:none;border:0;border-radius:30px;padding:9px 24px;background:var(--rose);color:#fff;transition:.2s}.pp:hover{transform:scale(1.05)}
+.row a{color:var(--rose);font-size:.9rem;text-decoration:underline;text-underline-offset:3px}
+.yt{grid-column:1/-1}
+.yt iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;margin-top:6px;animation:grow .5s}
+@keyframes grow{from{opacity:0;transform:scaleY(.6)}}
+@media(max-width:520px){.song{grid-template-columns:70px 1fr}.vinyl{width:70px;height:70px}}
+.final{text-align:center;padding-bottom:110px}
+.final .cta{color:var(--ink);border-color:var(--gold);background:linear-gradient(180deg,rgba(212,241,250,.35),rgba(124,195,218,.15))}
+.final .cta:hover{color:var(--wine)}
+#reveal{position:fixed;inset:0;z-index:100;display:none;place-items:center;text-align:center;padding:30px;background:radial-gradient(circle,#e3f5fc,#b9dff0 85%);color:#12324a}
+#reveal.show{display:grid;animation:fade 1s}
+@keyframes fade{from{opacity:0}}
+#reveal p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.7vw,1.85rem);line-height:1.35;max-width:780px;margin:0 0 1.5rem}
+.bigheart{font-size:5rem;color:#1f8fb5;animation:beat 1.2s infinite}
+@keyframes beat{15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.2)}}
+#reveal .x{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:20px;background:none;border:0;font-size:2.2rem;color:#12324a}
+#reveal .cta{color:#12324a}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:101}
+footer{text-align:center;padding:30px 20px 60px;color:var(--soft)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+.ic{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex:none}
+.ic.st{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hero h1 .ic{color:#b5e6f5;width:.7em;height:.7em}
+.hero{padding-top:60px}
+.fh .ic{width:1em;height:1em}
+.cue .ic{margin-left:4px}
+.bigheart .ic{width:1em;height:1em}
+.story{display:flex;align-items:center;justify-content:center;gap:clamp(28px,6vw,70px);flex-wrap:wrap;max-width:860px;margin:30px auto 0}
+.story-ph{position:relative;perspective:900px;animation:floaty 5s ease-in-out infinite}
+@keyframes floaty{50%{transform:translateY(-12px)}}
+.story-frame{position:relative;width:min(270px,68vw);aspect-ratio:9/16;border-radius:36px;border:9px solid #082a42;background:#082a42;overflow:hidden;box-shadow:0 30px 60px rgba(8,42,66,.4),0 0 0 2px rgba(124,195,218,.7),0 0 60px rgba(124,195,218,.45);transition:transform .25s;transform-style:preserve-3d}
+.story-frame img{width:100%;height:100%;object-fit:cover;display:block;border-radius:26px}
+.notch{position:absolute;top:8px;left:50%;width:70px;height:16px;border-radius:10px;background:#082a42;transform:translateX(-50%);z-index:3}
+.shine{position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:sweep 4.5s ease-in-out infinite;z-index:2;pointer-events:none}
+@keyframes sweep{55%,100%{transform:translateX(120%)}}
+.tw{position:absolute;color:var(--gold);animation:twinkle 2.6s ease-in-out infinite;font-size:26px}
+.tw.t1{top:-8px;right:-14px}.tw.t2{bottom:60px;left:-22px;font-size:18px;animation-delay:.8s}.tw.t3{bottom:-8px;right:-6px;font-size:20px;color:var(--rose);animation-delay:1.5s}
+@keyframes twinkle{50%{transform:scale(1.5) rotate(20deg);opacity:.4}}
+.story-txt{max-width:340px;text-align:left}
+.story-txt h3{font-size:clamp(1.8rem,4vw,2.4rem);font-style:italic}
+.story-txt .hand{color:var(--soft);margin:.8rem 0 1.4rem}
+.dl{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:40px;background:linear-gradient(135deg,#2a9bc4,#1f78a3);color:#fff;text-decoration:none;box-shadow:0 12px 26px rgba(31,143,181,.4);transition:transform .25s;position:relative}
+.dl::after{content:"";position:absolute;inset:-5px;border-radius:44px;border:2px solid rgba(124,195,218,.6);animation:ring 2.4s ease-out infinite}
+@keyframes ring{to{transform:scale(1.15,1.35);opacity:0}}
+.dl:hover{transform:translateY(-3px)}
+.dl .ic{font-size:1.15em}
+@media(max-width:640px){.story-txt{text-align:center}}
+.yt-i{font-size:1.45em;vertical-align:-.3em}.yt-i .t{fill:#1f78a3}
+.pp{display:inline-flex;align-items:center;gap:9px}
+.row a.pp{color:#fff;text-decoration:none;background:linear-gradient(135deg,#2a9bc4,#1f78a3);box-shadow:0 8px 18px rgba(31,120,163,.35)}
+.row a.pp:hover{color:#fff;background:#17789a}
+#reveal{overflow-y:auto}#reveal>div{margin:auto;padding:70px 0 50px;max-width:780px}
+#revText{position:relative;white-space:pre-line;text-wrap:balance;line-height:1.5}#revText .g{visibility:hidden}#revText .ty{position:absolute;inset:0}
+</style>
+</head>
+<body>
+<header class="hero" id="home">
+  <h1>A Little Box of Goodies, Made Just for You <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></h1>
+  <div class="hand-to">To Onelly, from Poopnaka</div>
+  <div class="stage">
+    <div class="glow" id="glow"></div>
+    <button class="gift" id="gift" aria-label="Open your gift box">
+      <svg viewBox="0 0 320 320">
+        <defs>
+          <linearGradient id="body" x1="0" x2="1"><stop offset="0" stop-color="#2f8fb8"/><stop offset=".5" stop-color="#8fd3ea"/><stop offset="1" stop-color="#1f78a3"/></linearGradient>
+          <linearGradient id="lidg" x1="0" x2="1"><stop offset="0" stop-color="#3fa0c8"/><stop offset=".5" stop-color="#b5e6f5"/><stop offset="1" stop-color="#2a86b0"/></linearGradient>
+          <linearGradient id="gold" x1="0" x2="1"><stop offset="0" stop-color="#5fa8c4"/><stop offset=".45" stop-color="#eefaff"/><stop offset="1" stop-color="#7cc3da"/></linearGradient>
+          <linearGradient id="in" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#031826"/><stop offset="1" stop-color="#0d3a55"/></linearGradient>
+          <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(5,30,60,.35)"/><stop offset=".25" stop-color="rgba(5,30,60,0)"/></linearGradient>
+        </defs>
+        <ellipse cx="160" cy="292" rx="125" ry="12" fill="rgba(0,0,0,.35)"/>
+        <path d="M52 152 L268 152 L250 130 L70 130Z" fill="url(#in)"/>
+        <rect x="52" y="152" width="216" height="132" rx="5" fill="url(#body)"/>
+        <rect x="52" y="152" width="216" height="132" rx="5" fill="url(#shade)"/>
+        <rect x="146" y="152" width="28" height="132" fill="url(#gold)"/>
+        <g class="tagg"><path d="M174 156 Q196 176 206 196" stroke="#7cc3da" stroke-width="2" fill="none"/>
+          <g transform="rotate(8 206 196)"><path d="M180 196 h92 v52 h-92 l-10 -26z" fill="#fffaf0" stroke="#7cc3da"/><circle cx="182" cy="222" r="3" fill="#7cc3da"/>
+          <text x="226" y="218" text-anchor="middle" font-family="Pinyon Script,cursive" font-size="17" fill="#12324a">To Onelly</text>
+          <text x="226" y="238" text-anchor="middle" font-family="Pinyon Script,cursive" font-size="13" fill="#5f7f95">from Poopnaka</text></g></g>
+        <g class="lid">
+          <rect x="40" y="108" width="240" height="48" rx="6" fill="url(#lidg)"/>
+          <rect x="40" y="148" width="240" height="8" rx="3" fill="rgba(5,30,60,.22)"/>
+          <rect x="146" y="108" width="28" height="48" fill="url(#gold)"/>
+          <path d="M160 106 C110 50 62 84 128 108Z" fill="url(#gold)"/><path d="M160 106 C210 50 258 84 192 108Z" fill="url(#gold)"/>
+          <path d="M160 106 C130 80 102 88 128 106Z" fill="rgba(10,60,100,.25)"/>
+          <ellipse cx="160" cy="106" rx="12" ry="10" fill="#cdeefa"/>
+          <path d="M156 112 L136 150 M164 112 L184 150" stroke="#7cc3da" stroke-width="9" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </button>
+  </div>
+  <button class="cta" id="openBtn">Open Your Box <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></button>
+  <div class="cue hand" id="cue">scroll down, there’s so much inside <svg class="ic st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg></div>
+</header>
+
+<div id="content">
+  <section class="pg" id="memories">
+    <h2>Our Memories<span class="rule"></span></h2>
+    <p class="sub">A few little pieces of us, pulled out of the box.</p>
+    <div class="portrait fly" id="portrait"></div>
+    <div class="pols" id="pols"></div>
+    <div class="story fly" id="story" style="--r:0deg">
+      <div class="story-ph"><div class="story-frame" id="storyFrame"><span class="notch"></span><img id="storyImg" alt="A collage of Onelly"><span class="shine"></span></div>
+        <span class="tw t1"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span><span class="tw t2"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span><span class="tw t3"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span></div>
+      <div class="story-txt"><h3>Every little thing I love about you</h3><p class="hand">A collage made of you, just for you. Keep it, share it, or set it as your wallpaper.</p>
+        <a class="dl" id="dl" href="#" target="_blank" rel="noopener" download="Onelly-collage.png"><svg class="ic st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg> Download your collage</a></div>
+    </div>
+  </section>
+  <section class="pg" id="songs">
+    <h2>Songs for You<span class="rule"></span></h2>
+    <p class="sub">Press play and let these say what I mean.</p>
+    <div class="songs" id="songList"></div>
+  </section>
+  <section class="pg final" id="final">
+    <h2>One Last Thing…<span class="rule"></span></h2>
+    <p class="sub">There’s one more thing at the bottom of the box.</p>
+    <button class="cta" id="lastBtn">Open it <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+  </section>
+  <footer class="hand">Made with all my love, by Poopnaka <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></footer>
+</div>
+
+<div id="reveal" role="dialog" aria-modal="true">
+  <button class="x" id="closeRev" aria-label="Close"><svg class="ic st" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div><div class="bigheart"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div><p id="revText"></p><button class="cta" id="again">Throw more hearts <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></button></div>
+</div>
+<canvas id="cv"></canvas>
+
+<script>
+/* ========== EDIT HERE: your photos, drawing, songs and message ==========
+   Images: use a file path next to this page (e.g. "photos/us1.jpg"). Leave "" for a placeholder.
+   Songs: paste the full YouTube link into url. */
+const CONFIG = {
+  to: "Onelly", from: "Poornaka",
+  portrait: {img:"https://res.cloudinary.com/dwcxwpn7q/image/upload/v1792778792/Moonlit_Beach_Hand_in_Hand_bx2t72.png", cap:"Us, always"},
+  photos: [
+    {img:"https://res.cloudinary.com/dwcxwpn7q/image/upload/v1792778330/20260505_171845_u8g17p.jpg", cap:"My favourite view", date:"5 May 2026"},
+    {img:"https://res.cloudinary.com/dwcxwpn7q/image/upload/v1792778326/20260508_204342_dpo54e.jpg", cap:"Our movie date", date:"8 May 2026"},
+    {img:"https://res.cloudinary.com/dwcxwpn7q/image/upload/v1792778327/20260508_220753_ph8rpj.jpg", cap:"Me and you", date:"8 May 2026"},
+    {img:"https://res.cloudinary.com/dwcxwpn7q/image/upload/v1792778326/20260508_220433_xolrx1.jpg", cap:"You and me", date:"8 May 2026"},
+    {img:"https://res.cloudinary.com/dwcxwpn7q/image/upload/v1792778326/20260505_180225_drn1xb.jpg", cap:"This one makes me yearn for you", date:"5 May 2026"}
+  ],
+  collage: {img:"https://res.cloudinary.com/dwcxwpn7q/image/upload/v1792775393/Curly_Portrait_Collage_Montage_xlpknh.png"},
+  songs: [
+    {title:"Void", artist:"The Neighbourhood", why:"For the quiet moments when I miss you the most.", url:"https://www.youtube.com/watch?v=agdObcVqqMU"},
+    {title:"TBH", artist:"PARTYNEXTDOOR", why:"Because I want to be completely honest with you.", url:"https://www.youtube.com/watch?v=UkZ4vZ-_WDY"},
+    {title:"Remember the Time", artist:"Michael Jackson", why:"Because the good times we had are worth remembering.", url:"https://www.youtube.com/watch?v=UOUuVlQC5Y0"},
+    {title:"DEEPER", artist:"PARTYNEXTDOOR", why:"Because what I feel for you runs deeper than one bad day.", url:"https://www.youtube.com/watch?v=u0889wlvhYM"},
+    {title:"Hold On, We’re Going Home", artist:"Drake ft. Majid Jordan", why:"Please hold on to us. I’m still here.", url:"https://www.youtube.com/watch?v=GxgqpCdOKak"},
+    {title:"Desire (Gryffin Remix)", artist:"Olly Alexander", why:"Because you’re still the one I want.", url:"https://www.youtube.com/watch?v=NYVg-V8-7q0"},
+    {title:"STAR", artist:"Young Scrolls", why:"Because you’re the brightest thing in my world.", url:"https://www.youtube.com/watch?v=PaZXPx1kdtg"}
+  ],
+  finalMessage: "I know things have been hard lately, and I hate that we ended up here. I made this box to remind you of all the good we’ve shared and to let you know how much you mean to me.\n\nWhatever you decide, I just wanted you to hear that from me. I’m truly sorry for the hurt I’ve caused, and I’m sorry that we allowed a misunderstanding to grow into something bigger than us.\n\nThis box isn’t me trying to win an argument or change your mind. It’s simply my way of remembering everything we’ve shared, everything that meant something to me, and how much I still care. I don’t want to lose what we have because of a misunderstanding.\n\nNo matter what happens, I hope you know that what we shared has always meant more to me than any argument ever could."
+};
+/* ================================================================== */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const PAL=[['#d4f1fa','#bfe3f2'],['#c7e8f5','#e3f5fc'],['#b9dff0','#d9eefa']];
+const ph=(e,i)=>'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${PAL[i%3][0]}"/><stop offset="1" stop-color="${PAL[i%3][1]}"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/><path d="M200 220C130 170 140 105 187 112c8 1 13 8 13 16 0-8 5-15 13-16 47-7 57 58-13 108z" fill="rgba(255,255,255,.75)"/></svg>`);
+const ytId=u=>{const m=String(u).match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/);return m?m[1]:''};
+
+/* build the page from CONFIG */
+$('#pols').innerHTML=CONFIG.photos.map((p,i)=>`<figure class="pol fly" style="--r:${[-4,2.5,-2,3,-3][i%5]}deg"><img alt="${esc(p.cap)}" src="${p.img||ph(p.emoji,i)}" onerror="this.onerror=null;this.src=ph('${p.emoji}',${i})"><div class="cap">${esc(p.cap)}</div><small>${esc(p.date)}</small></figure>`).join('');
+$('#storyImg').src=CONFIG.collage.img;
+(()=>{const u=CONFIG.collage.img,a=$('#dl');a.href=u.includes('/upload/')?u.replace('/upload/','/upload/fl_attachment:Onelly-collage/'):u})();
+const sp=$('.story-ph');
+sp.addEventListener('pointermove',e=>{const r=sp.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;$('#storyFrame').style.transform=`rotateY(${x*16}deg) rotateX(${-y*16}deg)`});
+sp.addEventListener('pointerleave',()=>$('#storyFrame').style.transform='');
+$('#portrait').innerHTML=`<img alt="${esc(CONFIG.portrait.cap)}" src="${CONFIG.portrait.img||ph(CONFIG.portrait.emoji,0)}" onerror="this.onerror=null;this.src=ph('${CONFIG.portrait.emoji}',0)"><div class="cap">${esc(CONFIG.portrait.cap)}</div>`;
+$('#songList').innerHTML=CONFIG.songs.map(x=>`<article class="song rev"><div class="vinyl" aria-hidden="true"></div><div><h3>${esc(x.title)}</h3><small>${esc(x.artist)}</small><p class="hand">${esc(x.why)}</p><div class="row"><a class="pp" href="${esc(x.url)}" target="_blank" rel="noopener noreferrer" aria-label="Play ${esc(x.title)} on YouTube"><svg class="ic yt-i" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="currentColor"/><path class="t" d="M10 8.8v6.4l5.4-3.2z"/></svg> Play on YouTube</a></div></div></article>`).join('');
+
+/* floating hearts */
+const ICON={heart:`<svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,spark:`<svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>`};
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function heart(){const h=document.createElement('span');h.className='fh';h.innerHTML=Math.random()<.7?ICON.heart:ICON.spark;
+  h.style.cssText=`left:${Math.random()*100}%;font-size:${12+Math.random()*18}px;color:${['#d4f1fa','#bfe3f2','#7cc3da'][Math.random()*3|0]};animation-duration:${9+Math.random()*7}s;--dx:${Math.random()*70-35}px`;
+  $('#home').appendChild(h);setTimeout(()=>h.remove(),17000)}
+if(!reduce)setInterval(heart,1300);
+
+/* particles: gold dust + hearts */
+const HP=new Path2D('M0 8C-14-2-10-11-3-9 -1-8 0-6 0-5 0-6 1-8 3-9 10-11 14-2 0 8Z'),SP=new Path2D('M0-9Q1-1 9 0Q1 1 0 9Q-1 1-9 0Q-1-1 0-9Z');
+const cv=$('#cv'),cx=cv.getContext('2d');let parts=[],run=false;
+const fit=()=>{cv.width=innerWidth;cv.height=innerHeight};fit();addEventListener('resize',fit);
+function burst(x,y,n,o={}){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,v=(o.v||6)*Math.random()+1;
+  parts.push({x,y,vx:Math.cos(a)*v*(o.spread||1),vy:Math.sin(a)*v-(o.up||0),g:o.g??.2,s:o.s||(8+Math.random()*12),a:1,d:o.d||.008,
+  c:['#d4f1fa','#7cc3da','#bfe3f2','#fff','#5bb4d4'][Math.random()*5|0],ch:o.dust?'s':(Math.random()<.6?'h':'s')})}
+  if(!run){run=true;requestAnimationFrame(tick)}}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(p=>p.a>0&&p.y<cv.height+40);
+  parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=.99;p.a-=p.d;cx.globalAlpha=Math.max(p.a,0);cx.fillStyle=p.c;cx.save();cx.translate(p.x,p.y);cx.scale(p.s/16,p.s/16);cx.fill(p.ch==='h'?HP:SP);cx.restore()});
+  parts.length?requestAnimationFrame(tick):(run=false,cx.clearRect(0,0,cv.width,cv.height))}
+
+/* opening the box: each treasure rises out of the box, then drifts down into place */
+let opened=false;
+function openBox(target){
+  if(opened){if(target)$(target).scrollIntoView({behavior:'smooth'});return}
+  opened=true;
+  const g=$('#gift');g.classList.add('open');$('#openBtn').hidden=true;
+  const r=g.getBoundingClientRect(),bx=r.left+r.width/2,by=r.top+r.height*.42;
+  setTimeout(()=>{$('#glow').classList.add('on');burst(bx,by,60,{v:7,up:5,g:.12,d:.012,dust:true,s:14})},450);
+  setTimeout(()=>{
+    $('#content').classList.add('show');
+    const items=$$('.fly'),sc=window.scrollY;
+    items.forEach((el,i)=>{
+      const e=el.getBoundingClientRect(),dx=bx-(e.left+e.width/2),dy=by+sc-(e.top+sc+e.height/2);
+      const rot=el.style.getPropertyValue('--r')||'0deg',spin=(i%2?1:-1)*(12+i*4);
+      el.classList.add('pre');
+      const a=el.animate([
+        {transform:`translate(${dx}px,${dy}px) scale(.15) rotate(0deg)`,opacity:0,offset:0,easing:'cubic-bezier(.2,.8,.3,1)'},
+        {transform:`translate(${dx*.97}px,${dy-190}px) scale(.85) rotate(${spin}deg)`,opacity:1,offset:.32,easing:'cubic-bezier(.5,0,.3,1.15)'},
+        {transform:`translate(0,0) scale(1) rotate(${rot})`,opacity:1,offset:1}
+      ],{duration:1900,delay:i*420,fill:'both'});
+      a.onfinish=()=>{el.classList.remove('pre');a.cancel()};
+      setTimeout(()=>{const q=el.getBoundingClientRect();burst(bx,by,10,{v:5,up:4,g:.12,d:.02,dust:true,s:12})},i*420+80);
+    });
+    $('#cue').classList.add('on');
+    setTimeout(()=>$('#memories').scrollIntoView({behavior:'smooth'}),900);
+    if(target&&target!=='#memories')setTimeout(()=>$(target).scrollIntoView({behavior:'smooth'}),items.length*420+2200);
+    /* songs glide in as they scroll into view */
+    const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.animate([{opacity:0,transform:'translateY(70px) scale(.9) rotate(-2deg)'},{opacity:1,transform:'none'}],{duration:900,easing:'cubic-bezier(.2,.9,.3,1.2)'});io.unobserve(en.target)}}),{threshold:.2});
+    $$('.rev').forEach(s=>io.observe(s));
+  },1500);
+}
+$('#openBtn').onclick=$('#gift').onclick=()=>openBox('#memories');
+
+/* final surprise */
+function typeFinal(){const el=$('#revText'),t=CONFIG.finalMessage;let n=0;clearInterval(typeFinal.t);
+  el.innerHTML=`<span class="g">${esc(t)}</span><span class="ty"></span>`;const ty=el.querySelector('.ty');
+  typeFinal.t=setInterval(()=>{ty.textContent=t.slice(0,++n);if(n>=t.length)clearInterval(typeFinal.t)},22)}
+const confetti=()=>{for(let k=0;k<4;k++)setTimeout(()=>burst(innerWidth*(.15+.23*k),innerHeight*.75,40,{v:12,up:12,g:.3,d:.006,s:20}),k*250)};
+$('#lastBtn').onclick=()=>{$('#reveal').classList.add('show');typeFinal();confetti()};
+$('#again').onclick=confetti;
+$('#closeRev').onclick=()=>$('#reveal').classList.remove('show');
+addEventListener('keydown',e=>{if(e.key==='Escape')$('#reveal').classList.remove('show')});
+</script>
+</body>
+</html>
